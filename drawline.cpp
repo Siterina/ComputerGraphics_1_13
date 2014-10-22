@@ -47,41 +47,20 @@ void DrawLine::paintEvent(QPaintEvent*)
 
     const double pi = 3.1415;
     double end = quarter + step;
+    angle = ui->RotateBox->value();
     angle = angle * pi / 180;
 
     double Ky = height()/(2*a);
     double Kx = (width() - 110)/(2*a);
     double K = std::min(Kx, Ky);
-    angle = ui->RotateBox->value();
 
 
-    //QGraphicsView graphicsView;
-   // QPainter pic(&graphicsView);
+
+
     QPainter pic(this);
 
     QPainterPath path;
-    //path.moveTo(height()/2, width()/2);
-  //  path.lineTo(10, 10);
-   // scene->addPath(path);
-   // QGraphicsScene scene;
-   // QGraphicsView view(&scene);
-  //  ui->setupUi(this);
-   // scene = new QGraphicsScene(this);
-  //  ui->view->setScene(scene);
-   /* ui->setupUi(this);
-    scene = new QGraphicsScene(this);
-    ui->view->setScene(scene);
 
-    QPainterPath path;
-    path.moveTo(50, 50);
-    path.lineTo(10, 10);
-    scene->addPath(path);*/
-
-   // QPainterPath path;
-   // path.moveTo(view.height()/2, view.width()/2);
-   // path.lineTo(view.height()/3, view.width()/3);
-  //  scene.addPath(path);
-   // view.show();
 
     //line
     pic.setPen(Qt::darkGray);
@@ -119,9 +98,7 @@ void DrawLine::paintEvent(QPaintEvent*)
         second += shift;
         path.moveTo(first.x(), first.y());
         path.lineTo(second.x(), second.y());
-        scene->addPath(path);
-
-      //  pic.drawLine(first, second);
+        scene->addPath(path, pen);
         first = second;
     }
 }
